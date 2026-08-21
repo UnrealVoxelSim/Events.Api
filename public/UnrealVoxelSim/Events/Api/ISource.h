@@ -6,10 +6,10 @@
 namespace UnrealVoxelSim::Events::Api
 {
 
-template <typename TEvent> class IEventSource
+template <typename TEvent> class ISource
 {
   public:
-    virtual ~IEventSource() = default;
+    virtual ~ISource() = default;
 
     [[nodiscard]] virtual Subscription Subscribe(Listener<TEvent> listener) = 0;
 };

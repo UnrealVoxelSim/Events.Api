@@ -8,10 +8,10 @@
 namespace UnrealVoxelSim::Events::Api
 {
 
-class IEventPump
+class IPump
 {
   public:
-    virtual ~IEventPump() = default;
+    virtual ~IPump() = default;
 
     [[nodiscard]] virtual bool HasPending() const noexcept = 0;
     [[nodiscard]] virtual std::size_t PendingCount() const noexcept = 0;
