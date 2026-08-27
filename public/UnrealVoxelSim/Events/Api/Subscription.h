@@ -56,4 +56,4 @@ class Subscription final
     std::move_only_function<void() noexcept> m_Unsubscribe;
 };
 
-} // namespace UnrealVoxelSim::Events::Api
+}

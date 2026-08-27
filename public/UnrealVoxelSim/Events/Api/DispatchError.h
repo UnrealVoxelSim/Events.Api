@@ -8,4 +8,4 @@ enum class DispatchError
     ReentrantDispatch,
 };
 
-} // namespace UnrealVoxelSim::Events::Api
+}

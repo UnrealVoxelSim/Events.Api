@@ -32,4 +32,4 @@ TEST(SubscriptionTest, MoveTransfersSubscriptionOwnership)
     EXPECT_EQ(calls, 1U);
 }
 
-} // namespace UnrealVoxelSim::Events::Api
+}

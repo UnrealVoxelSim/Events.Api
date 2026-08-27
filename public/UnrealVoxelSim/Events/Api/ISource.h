@@ -13,4 +13,4 @@ namespace UnrealVoxelSim::Events::Api
 
 		[[nodiscard]] virtual Subscription Subscribe(Listener<TEvent> listener) = 0;
 	};
-} // namespace UnrealVoxelSim::Events::Api
+}

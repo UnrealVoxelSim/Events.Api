@@ -10,4 +10,4 @@ namespace UnrealVoxelSim::Events::Api
 
 		virtual void Publish(TEvent event) = 0;
 	};
-} // namespace UnrealVoxelSim::Events::Api
+}
