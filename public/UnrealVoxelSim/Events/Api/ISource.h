@@ -5,13 +5,12 @@
 
 namespace UnrealVoxelSim::Events::Api
 {
+	template <typename TEvent>
+	class ISource
+	{
+	public:
+		virtual ~ISource() = default;
 
-template <typename TEvent> class ISource
-{
-  public:
-    virtual ~ISource() = default;
-
-    [[nodiscard]] virtual Subscription Subscribe(Listener<TEvent> listener) = 0;
-};
-
+		[[nodiscard]] virtual Subscription Subscribe(Listener<TEvent> listener) = 0;
+	};
 } // namespace UnrealVoxelSim::Events::Api
