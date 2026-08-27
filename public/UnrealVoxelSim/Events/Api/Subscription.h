@@ -12,7 +12,7 @@ class Subscription final
     Subscription() noexcept = default;
 
     explicit Subscription(std::move_only_function<void() noexcept> unsubscribe) noexcept
-        : Unsubscribe_(std::move(unsubscribe))
+        : m_Unsubscribe(std::move(unsubscribe))
     {
     }
 
@@ -24,7 +24,7 @@ class Subscription final
     Subscription(const Subscription &) = delete;
     Subscription &operator=(const Subscription &) = delete;
 
-    Subscription(Subscription &&other) noexcept : Unsubscribe_(std::move(other.Unsubscribe_))
+    Subscription(Subscription &&other) noexcept : m_Unsubscribe(std::move(other.m_Unsubscribe))
     {
     }
 
@@ -33,27 +33,27 @@ class Subscription final
         if (this != &other)
         {
             Reset();
-            Unsubscribe_ = std::move(other.Unsubscribe_);
+            m_Unsubscribe = std::move(other.m_Unsubscribe);
         }
         return *this;
     }
 
     [[nodiscard]] explicit operator bool() const noexcept
     {
-        return static_cast<bool>(Unsubscribe_);
+        return static_cast<bool>(m_Unsubscribe);
     }
 
     void Reset() noexcept
     {
-        if (Unsubscribe_)
+        if (m_Unsubscribe)
         {
-            auto unsubscribe = std::move(Unsubscribe_);
+            auto unsubscribe = std::move(m_Unsubscribe);
             unsubscribe();
         }
     }
 
   private:
-    std::move_only_function<void() noexcept> Unsubscribe_;
+    std::move_only_function<void() noexcept> m_Unsubscribe;
 };
 
 } // namespace UnrealVoxelSim::Events::Api
