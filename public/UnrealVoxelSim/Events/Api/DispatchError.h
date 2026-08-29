@@ -2,10 +2,8 @@
 
 namespace UnrealVoxelSim::Events::Api
 {
-
-enum class DispatchError
-{
-    ReentrantDispatch,
-};
-
+	enum class DispatchError
+	{
+		ReentrantDispatch,
+	};
 }
