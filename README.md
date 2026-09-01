@@ -1,11 +1,7 @@
 # UnrealVoxelSim.Events.Api
 
-Dynamic, type-safe event contracts shared by UnrealVoxelSim modules.
+Type-safe local event contracts shared by UnrealVoxelSim modules. Each domain event exposes a narrow source interface;
+consumers register `noexcept` listeners and own move-only RAII subscriptions.
 
-Each domain event exposes its own narrow source interface, normally as a domain-local alias such as
-`using IFoundedSource = Events::Api::ISource<Founded>`. Consumers register `noexcept` functors and own the returned
-move-only RAII subscription.
-
-Publishers submit event values whose lifetime is owned by the event implementation. `IPump` provides generic
-queued dispatch and pending-delivery inspection; it has no knowledge of simulation ticks, phases, ECS, or persistence.
-All interfaces are thread-affine unless an implementation documents a stronger contract.
+Local publication is synchronous. The in-memory implementation invokes listeners immediately in deterministic
+subscription order, and nested publication is depth-first. There is no generic event pump or pending-event buffer.
